@@ -14,6 +14,7 @@ import {
   Activity,
   Cloud,
   LucideIcon,
+  Mountain,
 } from "lucide-react";
 import { SensorConfig } from "@/types/sensor";
 
@@ -43,8 +44,8 @@ export const sensorConfig: SensorConfig[] = [
   },
   {
     sensorId: "humidity",
-    title: "Luftfeuchtigkeit",
-    titleEn: "Humidity",
+    title: "Luftfeuchtigkeit Hub",
+    titleEn: "Humidity Hub",
     unit: "%",
     icon: Droplets,
     formatting: (value) => value.toFixed(0),
@@ -60,11 +61,11 @@ export const sensorConfig: SensorConfig[] = [
     chartYAxis: "y",
   },
   {
-    sensorId: "air_pressure", // Matches the ID in your /api/latest route
-    title: "Luftdruck",
-    titleEn: "Air Pressure",
-    unit: "hPa",
-    icon: Gauge,
+    sensorId: "alt", // Matches the ID in your /api/latest route
+    title: "Höhenmeter",
+    titleEn: "Altitude",
+    unit: "m",
+    icon: Mountain,
     formatting: (value) => value.toFixed(0),
     iconColor: "text-primary-300",
     shadowColor: "shadow-primary-300/20",
@@ -72,8 +73,8 @@ export const sensorConfig: SensorConfig[] = [
     hoverTextColor: "group-hover:text-primary-300",
     showInHistory: true,
     showInDownload: true,
-    description: "Druckdaten in hPa",
-    descriptionEn: "Pressure data in hPa",
+    description: "Höhenmeter in m",
+    descriptionEn: "Altitude in m",
     chartColor: "#27ae60", // Green
     chartYAxis: "y2", // Use the right-hand Y-axis
   },

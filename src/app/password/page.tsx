@@ -10,6 +10,16 @@ export default function PasswordPage() {
   const [protectionDisabled, setProtectionDisabled] = useState(false);
   const router = useRouter();
 
+  // Force light mode on password page
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.classList.remove("dark");
+    }
+    if (typeof window !== "undefined") {
+      localStorage.setItem("theme", "light");
+    }
+  }, []);
+
   // If password protection is disabled via env, redirect directly to home
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_PASSWORD_PROTECTION_ENABLED === "false") {
@@ -68,12 +78,12 @@ export default function PasswordPage() {
 
   return (
     <div className="flex items-center justify-center w-full min-h-screen px-4">
-      <div className="w-full max-w-md p-6 space-y-6 bg-background-light/80 dark:bg-primary-900/80 rounded-2xl shadow-xl backdrop-blur-sm border border-primary-100/60 dark:border-primary-700">
+      <div className="w-full max-w-md p-6 space-y-6 bg-background-light/80 rounded-2xl shadow-xl backdrop-blur-sm border border-primary-100/60">
         <div className="space-y-2 text-center">
-          <h1 className="text-2xl font-bold text-primary-800 dark:text-primary-50">
+          <h1 className="text-2xl font-bold text-primary-800">
             Geschütztes Dashboard
           </h1>
-          <p className="text-sm text-primary-600 dark:text-primary-100">
+          <p className="text-sm text-primary-600">
             Bitte gib das Passwort ein, um auf die Messdaten zuzugreifen.
           </p>
         </div>
@@ -82,7 +92,7 @@ export default function PasswordPage() {
           <div className="space-y-1">
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-primary-700 dark:text-primary-100"
+              className="block text-sm font-medium text-primary-700"
             >
               Passwort
             </label>
@@ -92,14 +102,14 @@ export default function PasswordPage() {
               autoComplete="current-password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className="w-full px-3 py-2 text-sm border rounded-lg shadow-sm outline-none bg-background-light dark:bg-primary-800 border-primary-200 dark:border-primary-700 text-primary-900 dark:text-primary-50 focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
+              className="w-full px-3 py-2 text-sm border rounded-lg shadow-sm outline-none bg-background-light border-primary-200 text-primary-900 focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
               placeholder="Passwort eingeben"
               required
             />
           </div>
 
           {error != null && (
-            <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+            <p className="text-sm text-red-600">{error}</p>
           )}
 
           <button
@@ -111,7 +121,7 @@ export default function PasswordPage() {
           </button>
         </form>
 
-        <p className="text-xs text-center text-primary-500 dark:text-primary-200">
+        <p className="text-xs text-center text-primary-500">
           Der Zugriff ist nur mit bekanntem Passwort möglich.
         </p>
       </div>

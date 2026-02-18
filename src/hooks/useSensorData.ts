@@ -79,6 +79,17 @@ export function useSensorData() {
               newLastUpdated[sensor.sensorId] = new Date(sensorApiData.ts);
             }
           }
+          // Location card shows GNSS-based Ort/map → use GNSS ts when no location/gps row exists
+          const locationTs = latest.location?.ts;
+          const gnssLonTs = latest.gnss_lon?.ts;
+          const gnssLatTs = latest.gnss_lat?.ts;
+          if (locationTs) {
+            newLastUpdated.location = new Date(locationTs);
+          } else if (gnssLonTs && gnssLatTs) {
+            const lonTime = new Date(gnssLonTs).getTime();
+            const latTime = new Date(gnssLatTs).getTime();
+            newLastUpdated.location = new Date(Math.max(lonTime, latTime));
+          }
           return newLastUpdated;
         });
 
