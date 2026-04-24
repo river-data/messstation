@@ -156,7 +156,7 @@ export const sensorConfig: SensorConfig[] = [
   */
   // END Multi-Sensor Card Example
   // Example Wind Speed Sensor 
-  {
+  /*{
     sensorId: "wind_speed",
     title: "Windstärke",
     titleEn: "Wind Speed",
@@ -174,7 +174,7 @@ export const sensorConfig: SensorConfig[] = [
     chartColor: "#f39c12", // Orange
     chartYAxis: "y",
   },
-  
+  */
 ];
 
 /**
