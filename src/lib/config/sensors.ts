@@ -153,8 +153,9 @@ export const sensorConfig: SensorConfig[] = [
     chartColor: "#27ae60", // Green
     chartYAxis: "y2",
   },
+  */
   // END Multi-Sensor Card Example
-  /* Example Wind Speed Sensor 
+  // Example Wind Speed Sensor 
   {
     sensorId: "wind_speed",
     title: "Windstärke",
@@ -173,7 +174,7 @@ export const sensorConfig: SensorConfig[] = [
     chartColor: "#f39c12", // Orange
     chartYAxis: "y",
   },
-  */
+  
 ];
 
 /**
